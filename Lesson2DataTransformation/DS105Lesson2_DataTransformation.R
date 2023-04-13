@@ -45,9 +45,55 @@ plotNormalHistogram(anime2$scored_byLOG2)
 plotNormalHistogram(anime2$scored_byLOG)
 
 
+# Now Transform Negatively Skewed Data
+#
+#
+#
+#
+#
 
+# View aired_from_year
+plotNormalHistogram(anime$aired_from_year)
 
+# Transform the data using square
+anime$aired_from_yearSQ <- anime$aired_from_year ^2
 
+# view transformed
+plotNormalHistogram(anime$aired_from_yearSQ)
+# The squre transformation is still skewed negative
 
+# Transform the data using cube
+anime$aired_from_yearCube <- anime$aired_from_year ^3
+plotNormalHistogram(anime$aired_from_yearCube)
+# It is still not normally distributed by it looks much better. 
+
+#
+#
+#
+#
+#
+#
+
+# Tukey's Ladder of Power Transformation in library("rcompanion")
+
+plotNormalHistogram(cruise_ship$Tonnage)
+# This data is naturally postively skewed
+
+# Use Tukey's Ladder of Power with argument plotit = FALSE
+cruise_ship$TonnageTukey <- transformTukey(cruise_ship$Tonnage, plotit = FALSE)
+plotNormalHistogram(cruise_ship$TonnageTukey)
+# Now the data is normally distributed
+
+# Try Tukey with the plotit = True
+transformTukey(cruise_ship$Tonnage, plotit = TRUE)
+
+#The Square Root show the most normal distribution
+
+#
+#
+#
+#
+#
+#
 
 
