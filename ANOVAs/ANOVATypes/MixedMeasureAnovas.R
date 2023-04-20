@@ -1,4 +1,5 @@
-# Lesson 5 Repeated Measures ANOVAS
+# Mixed Measure ANOVA Lesson 6 
+
 # 
 
 # Packages
@@ -25,7 +26,6 @@ library("IDPmisc")
 # Assess for NaN
 View(breakfast)
 bk <- breakfast[1:33,]
-
 View(bk)
 
 # Create a dataset for the start of the study
@@ -81,7 +81,13 @@ bk4$TreatmentGroup <- bk4$`Treatment Group`
 leveneTest(repdat ~ TreatmentGroup*contrasts, data = bk4)
 # this test is not significant and passes assumption
 
-# Repeated Measure ANOVA
 
-RMAnova <- aov(repdat~contrasts+Error(`Participant Code`), bk4)
+# Type 2 Repeated Measure ANOVA
+RMAnova<- aov(repdat~contrasts+Error(`Participant Code`), bk4)
 summary(RMAnova)
+
+
+# Mixed Measure ANOVA
+MMAnova<- aov(repdat~(TreatmentGroup*contrasts)+Error(`Participant Code`/(contrasts)), bk4)
+summary(MMAnova)
+

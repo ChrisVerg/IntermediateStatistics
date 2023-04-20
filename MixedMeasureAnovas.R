@@ -1,4 +1,5 @@
-# Lesson 5 Repeated Measures ANOVAS
+# Mixed Measure ANOVA Lesson 6 
+
 # 
 
 # Packages
@@ -80,8 +81,3 @@ bk4$TreatmentGroup <- bk4$`Treatment Group`
 
 leveneTest(repdat ~ TreatmentGroup*contrasts, data = bk4)
 # this test is not significant and passes assumption
-
-# Repeated Measure ANOVA
-
-RMAnova <- aov(repdat~contrasts+Error(`Participant Code`), bk4)
-summary(RMAnova)
